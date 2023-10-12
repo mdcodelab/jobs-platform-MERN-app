@@ -55,8 +55,8 @@ const Wrapper = styled.main`
   }
 
   nav img {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
   }
 
   nav h4 {
