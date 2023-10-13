@@ -37,19 +37,53 @@ function Register() {
         return labelName[name] || "";
     }
 
+    function toggleMember () {
+    setValues({...values, isMember: !values.isMember, showAlert:!values.showAlert})
+    console.log(values)
+    }
+
 
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={handleSubmit}>
         <Logo></Logo>
-        <h3>Login</h3>
-        {values.showAlert && (<Alert></Alert>)}
-        <FormRow type="text" value={values.name} name="name" onChange={handleChange} getLabel={getLabel}></FormRow>
-        <FormRow type="email" value={values.email} name="email" onChange={handleChange} getLabel={getLabel}></FormRow>
-        <FormRow type="password" value={values.password} name="password" onChange={handleChange} getLabel={getLabel}></FormRow>
-        <button type="submit" className="btn btn-block">Submit</button>
-        <div>
-        </div>
+        <h3>{values.isMember ? "Login" : "Register"}</h3>
+        {values.showAlert && <Alert></Alert>}
+        {!values.isMember && (
+          <FormRow
+            type="text"
+            value={values.name}
+            name="name"
+            onChange={handleChange}
+            getLabel={getLabel}
+          ></FormRow>
+        )}
+
+        <FormRow
+          type="email"
+          value={values.email}
+          name="email"
+          onChange={handleChange}
+          getLabel={getLabel}
+        ></FormRow>
+
+        <FormRow
+          type="password"
+          value={values.password}
+          name="password"
+          onChange={handleChange}
+          getLabel={getLabel}
+        ></FormRow>
+        <button type="submit" className="btn btn-block">
+          Submit
+        </button>
+          <div className="register">
+            <span>{values.isMember ? "Not a member?" : "Already a member?"}</span>
+            <button type="button" className="member-btn" onClick={toggleMember}>
+              {values.isMember ? "Register" : "Login"}
+            </button>
+          </div>
+        
       </form>
     </Wrapper>
   );
@@ -63,9 +97,24 @@ h3 {
     margin-bottom: 0;
 }
 
-.form div {
+.form .register {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+}
+
+.member-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--primary-500);
+    font-size: 1.1.9rem;
+    transition: color 0.5 ease-in-out;
+}
+
+.member-btn:hover {
+    color: var(--primary-700);
 }
 `;
 

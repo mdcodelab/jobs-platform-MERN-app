@@ -29,8 +29,10 @@ width: 100%;
   }
 
   .logo__content img {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    margin-right: 1rem;
   }
 
   .logo__content h4 {
