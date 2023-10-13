@@ -1,4 +1,6 @@
 import React from 'react';
+import reducer from "./reducer.js";
+
 
 const initialState = {
 isLoading: false,
@@ -10,7 +12,9 @@ alertType: ""
 const AppContext = React.createContext();
 
 export const AppContextProvider = ({children}) => {
-    const[state, setState]=React.useState(initialState);
+
+    const [state, dispatch] = React.useReducer(reducer, initialState);
+
 
 
     return <AppContext.Provider value={{
