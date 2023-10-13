@@ -4,4 +4,6 @@ C L I E N T
 
 2. Home page
 
-3. 
+3. Error Page, Register page
+
+4. setup global context

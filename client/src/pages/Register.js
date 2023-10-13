@@ -2,31 +2,36 @@ import React from 'react';
 import styled from "styled-components";
 import Logo from "../components/Logo.js";
 import FormRow from '../components/FormRow.js';
-import Alert from "../components/Alert.js"
+import Alert from "../components/Alert.js";
+import { useAppContext } from '../context/appContext.js';
 
 function Register() {
+    //global state
+    const {isLoading, showAlert} = useAppContext();
+    
 
-    const initialState = {
-        name: "",
-        email: "", 
-        password: "",
-        isMember: false,
-        showAlert: true
-    }
+    //local state
+const initialState = {
+  name: "",
+  email: "",
+  password: "",
+  isMember: false
+};
 
-    const[values, setValues]=React.useState(initialState);
-    //global states
+const [values, setValues] = React.useState(initialState);
 
-    function handleChange (e) {
-        let newValues = e.target.value;
-        console.log(newValues);
-        setValues(newValues); 
-    }
+function handleChange(e) {
+  const { name, value } = e.target;
+  console.log(e.target.value);
+  setValues((prevState) => ({ ...prevState, [name]: value }));
+}
 
-    function handleSubmit (e) {
-        e.preventDefault();
-        //console.log(e.target);
-    }
+function handleSubmit(e) {
+  e.preventDefault();
+  //console.log(e.target);
+}
+
+    
 
     function getLabel(name) {
         let labelName={
@@ -38,7 +43,7 @@ function Register() {
     }
 
     function toggleMember () {
-    setValues({...values, isMember: !values.isMember, showAlert:!values.showAlert})
+    setValues({...values, isMember: !values.isMember})
     console.log(values)
     }
 
@@ -48,7 +53,7 @@ function Register() {
       <form className="form" onSubmit={handleSubmit}>
         <Logo></Logo>
         <h3>{values.isMember ? "Login" : "Register"}</h3>
-        {values.showAlert && <Alert></Alert>}
+        {showAlert && <Alert></Alert>}
         {!values.isMember && (
           <FormRow
             type="text"
@@ -82,8 +87,7 @@ function Register() {
             <button type="button" className="member-btn" onClick={toggleMember}>
               {values.isMember ? "Register" : "Login"}
             </button>
-          </div>
-        
+          </div> 
       </form>
     </Wrapper>
   );
@@ -109,7 +113,7 @@ h3 {
     background: transparent;
     cursor: pointer;
     color: var(--primary-500);
-    font-size: 1.1.9rem;
+    font-size: 1.19rem;
     transition: color 0.5 ease-in-out;
 }
 
