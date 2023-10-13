@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import Logo from "../components/Logo.js";
-import FormRow from "../components/FormRow.js";
+import FormRow from '../components/FormRow.js';
+import Alert from "../components/Alert.js"
 
 function Register() {
 
@@ -9,7 +10,8 @@ function Register() {
         name: "",
         email: "", 
         password: "",
-        isMember: true
+        isMember: false,
+        showAlert: true
     }
 
     const[values, setValues]=React.useState(initialState);
@@ -17,12 +19,13 @@ function Register() {
 
     function handleChange (e) {
         let newValues = e.target.value;
-        //console.log(newValues);
+        console.log(newValues);
         setValues(newValues); 
     }
 
     function handleSubmit (e) {
         e.preventDefault();
+        //console.log(e.target);
     }
 
     function getLabel(name) {
@@ -40,17 +43,30 @@ function Register() {
       <form className="form" onSubmit={handleSubmit}>
         <Logo></Logo>
         <h3>Login</h3>
+        {values.showAlert && (<Alert></Alert>)}
         <FormRow type="text" value={values.name} name="name" onChange={handleChange} getLabel={getLabel}></FormRow>
         <FormRow type="email" value={values.email} name="email" onChange={handleChange} getLabel={getLabel}></FormRow>
         <FormRow type="password" value={values.password} name="password" onChange={handleChange} getLabel={getLabel}></FormRow>
         <button type="submit" className="btn btn-block">Submit</button>
+        <div>
+        </div>
       </form>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
 
+.form div {
+    display: flex;
+    justify-content: center;
+}
 `;
 
 export default Register;
