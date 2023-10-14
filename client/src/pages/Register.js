@@ -7,8 +7,8 @@ import { useAppContext } from '../context/appContext.js';
 
 function Register() {
     //global state
-    const {isLoading, showAlert, displayAlert} = useAppContext();
-    
+    const {isLoading, showAlert, displayAlert, clearAlert} = useAppContext();
+    console.log(showAlert);
 
     //local state
 const initialState = {
@@ -28,15 +28,11 @@ const {name, value}=e.target;
 function handleSubmit(e) {
     const {name, email, password, isMember}= values;
   e.preventDefault();
-  if(!email || !password || !isMember & !name) {
-        displayAlert();
-        return;
-    }
-    
-  console.log(e.target);
+  if(!email || !password || (!isMember & !name)) {
+    displayAlert();
+    clearAlert();
+  }
 }
-
-    
 
     function getLabel(name) {
         let labelName={
