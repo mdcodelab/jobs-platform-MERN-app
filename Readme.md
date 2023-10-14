@@ -28,13 +28,15 @@ S E R V E R
   }
 }
 
-command: npx nodemon server.js
+command: npx nodemon server.js /npm start
 2. middleware folder:
 - not-found.js return 404
 - error-handler.js return 500, 4 params (the first is error), place it last,
  eventually place it with mongoose errors, showcase with async errors
 
+3. create .env file
 
+4. create db folder, connectDB file, 
 
 
 
