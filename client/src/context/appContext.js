@@ -15,10 +15,14 @@ export const AppContextProvider = ({children}) => {
 
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
-
+    const displayAlert = () => {
+        dispatch({type: "DISPLAY_ALERT"})
+    }
 
     return <AppContext.Provider value={{
-        ...state}}>
+        ...state,
+        displayAlert
+        }}>
         {children}
     </AppContext.Provider>
 }

@@ -7,7 +7,7 @@ import { useAppContext } from '../context/appContext.js';
 
 function Register() {
     //global state
-    const {isLoading, showAlert} = useAppContext();
+    const {isLoading, showAlert, displayAlert} = useAppContext();
     
 
     //local state
@@ -21,14 +21,19 @@ const initialState = {
 const [values, setValues] = React.useState(initialState);
 
 function handleChange(e) {
-  const { name, value } = e.target;
-  console.log(e.target.value);
+const {name, value}=e.target;
   setValues((prevState) => ({ ...prevState, [name]: value }));
 }
 
 function handleSubmit(e) {
+    const {name, email, password, isMember}= values;
   e.preventDefault();
-  //console.log(e.target);
+  if(!email || !password || !isMember & !name) {
+        displayAlert();
+        return;
+    }
+    
+  console.log(e.target);
 }
 
     

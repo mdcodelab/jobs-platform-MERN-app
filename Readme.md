@@ -7,3 +7,8 @@ C L I E N T
 3. Error Page, Register page
 
 4. setup global context
+
+5. setup reducer.js
+
+6. setup actions:
+- DISPLAY_ALERT
