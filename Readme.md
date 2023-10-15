@@ -50,3 +50,15 @@ and http://localhost:5000/api/v1/jobs and http://localhost:5000/api/v1/stats etc
 
 9. model folder, user model - user.js, setup schema
 
+10. mongoose custom email validation & validator (npm install validator)
+  email: {
+    type: String,
+    required: [true, "Please provide email!"],
+    validate: {
+        validator: validator.isEmail,
+        message: "Please provide a valid email"
+    },
+    unique: true,
+  }
+
+  110.
