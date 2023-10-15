@@ -42,6 +42,8 @@ command: npx nodemon server.js /npm start
 
 6. create routes folder, authRoutes.js, setup express router, import functions form authController.js
 
+7. same thing for jobs: jobsController.js (and functions: getAllJobs, createJob, updateJob, deleteJob) and
+jobsRoutes.js
 
 
 

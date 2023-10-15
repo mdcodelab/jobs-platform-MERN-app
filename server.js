@@ -18,6 +18,8 @@ app.get("/", (req, res) => {
 
 const authRoutes = require("./router/authRoutes");
 app.use("/api/v1/auth", authRoutes);
+const jobsRoutes=require("./router/jobsRoutes");
+app.use("/api/v1/jobs", jobsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
