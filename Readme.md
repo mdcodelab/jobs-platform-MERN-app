@@ -45,5 +45,8 @@ command: npx nodemon server.js /npm start
 7. same thing for jobs: jobsController.js (and functions: getAllJobs, createJob, updateJob, deleteJob) and
 jobsRoutes.js
 
+8. test the routes on insomnia: http://localhost:5000/api/v1/auth/(register, login or updateUser)
+and http://localhost:5000/api/v1/jobs and http://localhost:5000/api/v1/stats etc.
 
+9. model folder, user model - user.js, setup schema
 
