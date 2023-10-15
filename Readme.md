@@ -61,4 +61,8 @@ and http://localhost:5000/api/v1/jobs and http://localhost:5000/api/v1/stats etc
     unique: true,
   }
 
-  110.
+  110. complete authController.js:
+  - import UserModel
+  - await User.create({req.body});
+  - if success 201 with json({user}) 
+  - if error 500 with json({msg: "There was an error!}) 
