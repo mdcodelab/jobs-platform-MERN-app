@@ -36,7 +36,11 @@ command: npx nodemon server.js /npm start
 
 3. create .env file
 
-4. create db folder, connectDB file, 
+4. create db folder, connectDB file.
+
+5. create controllers folder, authController.js and functions, export {register, login, updateUser}
+
+6. create routes folder, authRoutes.js, setup express router, import functions form authController.js
 
 
 
