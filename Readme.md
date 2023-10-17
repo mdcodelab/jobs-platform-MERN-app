@@ -28,7 +28,7 @@ S E R V E R
   }
 }
 
-command: npx nodemon server.js /npm start
+command: npx nodemon server.js /npm start/node server.js
 2. middleware folder:
 - not-found.js return 404
 - error-handler.js return 500, 4 params (the first is error), place it last,
@@ -61,8 +61,64 @@ and http://localhost:5000/api/v1/jobs and http://localhost:5000/api/v1/stats etc
     unique: true,
   }
 
-  110. complete authController.js:
+  11. complete authController.js:
   - import UserModel
   - await User.create({req.body});
   - if success 201 with json({user}) 
   - if error 500 with json({msg: "There was an error!}) 
+
+
+12. not-found.js:
+const notFound = (req, res) => {
+res.status(404).send("Route does not exist!")
+}
+
+error-handler.js:
+const errorHandler = (err, req, res, next) => {
+console.log(err);
+//res.status(500).json({msg: "There was an error!"}) or
+res.status(500).json({msg: err});
+//next(err); 
+}
+
+authController:
+const register = async (req, res, next) => {
+    try {
+        const user = await UserModel.create(req.body);
+        console.error("This is the register function");
+        res.status(201).json({user});
+    } catch (error) {
+        //res.status(500).json({msg: "There was an error!"}) or
+        console.log(error);
+        next(error);
+    }
+13. npm install express-async-errors
+
+ const register = async (req, res) => {
+    const user = await UserModel.create(req.body);
+    res.status(201).json({user});
+}
+
+14. install http status codes setup in both places: error-handler.js & authController.js
+error-handler.js:
+const errorHandler = (err, req, res, next) => {
+//res.status(500).json({msg: "There was an error!"}) or
+res.status(500).json({msg: err});
+//next(err); 
+}
+becomes:
+error-handler.js
+const{StatusCodes}=requite("http-status-codes")
+const errorHandler = (err, req, res) => {
+  const defaultError = {
+    statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    msg: "Somethings goes wrong, try again later"
+  }
+  res.status(defaultError.statusCode).json(msg: err)
+}
+
+authController.js:
+const register = async (req, res) => {
+    const user = await UserModel.create(req.body);
+    res.status(StatusCodes.OK).json({user});
+}

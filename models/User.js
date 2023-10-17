@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema({
     maxlength: 30,
     trim: true,
     default: "MyCity",
-  },
+  }
 });
 
 module.exports = mongoose.model("UserModel", UserSchema);
