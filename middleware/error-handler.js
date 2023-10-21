@@ -14,10 +14,10 @@ const errorHandler = (err, req, res, next) => {
 //       .map((item) => item.message)
 //       .join(",");
 //   }
-//   if (err.code && err.code === 11000) {
-//     defaultError.statusCode = StatusCodes.BAD_REQUEST;
-//     defaultError.msg = `${Object.keys(err.keyValue)} field has to be unique`;
-//   }
+  if (err.code && err.code === 11000) {
+    defaultError.statusCode = StatusCodes.BAD_REQUEST;
+    defaultError.msg = `${Object.keys(err.keyValue)} field has to be unique`;
+  }
 
   res.status(defaultError.statusCode).json({ msg: defaultError.msg });
 };
