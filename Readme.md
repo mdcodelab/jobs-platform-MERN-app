@@ -122,3 +122,6 @@ const register = async (req, res) => {
     const user = await UserModel.create(req.body);
     res.status(StatusCodes.OK).json({user});
 }
+
+15. set up error handler in the server
+
