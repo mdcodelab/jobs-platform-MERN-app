@@ -12,6 +12,11 @@ const register = async (req, res, next) => {
         throw new BadRequestError("Please provide all values!")
     }
 
+    const userAlreadyExists = await UserModel.findOne({email});
+    if(userAlreadyExists) {
+        throw new BadRequestError("Email already in use!");
+    }
+
        const user = await UserModel.create({ name, email, password });
     res.status(StatusCodes.OK).json({ user });
     } catch (error) {
