@@ -209,6 +209,22 @@ const userAlreadyExists = await UserModel.findOne({email});
 - UserSchema.pre('save',async function(){
   "this" points to instance created by UserSchema
   
-  18. 
 
+  18. Mongoose - Custom Instance Methods
+
+[Custom Instance Methods](https://mongoosejs.com/docs/guide.html#methods)
+
+- UserSchema.methods.createJWT = function(){console.log(this)}
+- register controller
+- right after User.create()
+- invoke user.createJWT()
+
+19. JWT
+- token
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+npm install jsonwebtoken
+- User Model
+- import jwt from 'jsonwebtoken'
+- jwt.sign(payload,secret,options)
+- createJWT
 
