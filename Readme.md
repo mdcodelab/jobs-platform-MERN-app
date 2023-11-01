@@ -17,6 +17,8 @@ C L I E N T
 
 
 S E R V E R
+npm install nodemon --save-dev
+
 1. basic package.json structure:
 "scripts": {
     "dev": "nodemon server.js"
@@ -28,7 +30,10 @@ S E R V E R
   }
 }
 
+"start":"nodemon server"
+
 command: npx nodemon server.js /npm start/node server.js
+
 2. middleware folder:
 - not-found.js return 404
 - error-handler.js return 500, 4 params (the first is error), place it last,
@@ -226,5 +231,18 @@ npm install jsonwebtoken
 - User Model
 - import jwt from 'jsonwebtoken'
 - jwt.sign(payload,secret,options)
-- createJWT
+- createJWT (in authController)
+
+20. Concurrently
+- install Concurrently 
+"scripts": {
+  "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
+}
+
+run> npm start - entire app
+
+21. 
+
 

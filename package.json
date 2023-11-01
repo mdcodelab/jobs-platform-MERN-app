@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -11,5 +14,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.2",
     "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1"
   }
 }
