@@ -243,6 +243,18 @@ npm install jsonwebtoken
 
 run> npm start - entire app
 
-21. 
+21. Proxy setup - only works in development
+- access from anywhere
+- don't want to use full url
+
+[cra proxy](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
+
+```js
+"proxy":"http://localhost:4000" - in the client package.json
+```
+
+- my preference to remove trailing slash /
+- restart app
+
 
 

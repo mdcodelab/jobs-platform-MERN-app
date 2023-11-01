@@ -11,7 +11,7 @@ const connectDB = require("./db/connectDB");
 app.use(express.json());
 
 //routers
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
     //throw Error("This error is from home route");
     res.send("Home page");
 })
@@ -24,7 +24,7 @@ app.use("/api/v1/jobs", jobsRoutes);
 app.use(notFound);
 app.use(errorHandler); //last one
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 const start = async () => {
     try {
