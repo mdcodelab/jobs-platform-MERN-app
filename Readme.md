@@ -124,4 +124,71 @@ const register = async (req, res) => {
 }
 
 15. set up error handler in the server
+authController.js:
+const {StatusCodes}=require("http-status-codes");
+const UserModel = require("../models/User");
+const {BadRequestError} = require("../errors/bad-request.js");
+
+
+const register = async (req, res, next) => {
+
+    try {
+        const {name, email, password}=req.body;
+
+    if(!name || !email || !password) {
+        throw new BadRequestError("Please provide all values!")
+    }
+
+       const user = await UserModel.create({ name, email, password });
+    res.status(StatusCodes.OK).json({ user });
+    } catch (error) {
+        next(error);
+    }
+}
+
+const login = async (req, res) => {
+try {
+    
+} catch (error) {
+    
+}
+}
+
+const updateUser = async (req, res) => {
+    res.send("Update user")
+}
+
+module.exports = {register, login, updateUser};
+
+
+16. create errors folder, with the following files:
+- custom-error.js: 
+class CustomError extends Error {
+constructor(message) {
+    super(message);
+}
+}
+
+-not-found.js:
+import { StatusCodes } from "http-status-codes";
+import { CustomError } from "./custom-error";
+
+class NotFoundError extends CustomError {
+  constructor(message) {
+    super(message);
+    this.statusCode = StatusCodes.NOT_FOUND;
+  }
+}
+
+-bad-request.js:
+const { StatusCodes } = require("http-status-codes");
+const { CustomError } = require("./custom-error.js");
+
+class BadRequestError extends CustomError {
+  constructor(message) {
+    super(message);
+    this.statusCode = StatusCodes.BAD_REQUEST;
+  }
+}
+
 
