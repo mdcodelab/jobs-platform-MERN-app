@@ -191,4 +191,24 @@ class BadRequestError extends CustomError {
   }
 }
 
+16.check for email already in use. In the authController: 
+const userAlreadyExists = await UserModel.findOne({email});
+    if(userAlreadyExists) {
+        throw new BadRequestError("Email already in use!");
+    }
+
+17. hash/encrypt passwords
+- install bcryptjs
+
+- User Model
+- import bcrypt from 'bcryptjs'
+- await genSalt(10)
+- await hash(password , salt)
+- await compare(requestPassword , currentPassword)
+- [mongoose middleware](https://mongoosejs.com/docs/middleware.html)
+- UserSchema.pre('save',async function(){
+  "this" points to instance created by UserSchema
+  
+  18. 
+
 
