@@ -230,8 +230,8 @@ const userAlreadyExists = await UserModel.findOne({email});
 npm install jsonwebtoken
 - User Model
 - import jwt from 'jsonwebtoken'
-- jwt.sign(payload,secret,options)
-- createJWT (in authController)
+- jwt.sign(payload,secret,options);
+- createJWT - in the register function (authController);
 
 20. Concurrently
 - install Concurrently 
@@ -256,5 +256,16 @@ run> npm start - entire app
 - my preference to remove trailing slash /
 - restart app
 
-
+22. REGISTER USER SETUP
+- client - appContext:
+async function registerUser (currentUser) {
+  console.log(currentUser);
+}
+-client - page - Register.js:
+function onSubmit () {
+-------------------
+const currentUser = {name, email, password, isMember}
+if(isMember) {console.log("Already a member!)}
+else {registerUser(currentUser)}
+}
 

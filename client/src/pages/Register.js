@@ -7,7 +7,7 @@ import { useAppContext } from '../context/appContext.js';
 
 function Register() {
     //global state
-    const {isLoading, showAlert, displayAlert, clearAlert} = useAppContext();
+    const {isLoading, showAlert, displayAlert, clearAlert, registerUser} = useAppContext();
     console.log(showAlert);
 
     //local state
@@ -26,12 +26,20 @@ const {name, value}=e.target;
 }
 
 function handleSubmit(e) {
-    const {name, email, password, isMember}= values;
   e.preventDefault();
-  if(!email || !password || (!isMember & !name)) {
+    const {name, email, password, isMember}= values;
+  if(!email || !password || (!isMember && !name)) {
     displayAlert();
     clearAlert();
+    return;
   }
+  let currentUser = {name, email, password};
+  if(isMember) {
+    console.log("Already a member")
+  } else {
+    registerUser(currentUser)
+  }
+  console.log(values);
 }
 
     function getLabel(name) {
@@ -80,9 +88,8 @@ function handleSubmit(e) {
           onChange={handleChange}
           getLabel={getLabel}
         ></FormRow>
-        <button type="submit" className="btn btn-block">
-          Submit
-        </button>
+        <button type="submit" className="btn btn-block" disabled={isLoading}>Submit</button>
+
           <div className="register">
             <span>{values.isMember ? "Not a member?" : "Already a member?"}</span>
             <button type="button" className="member-btn" onClick={toggleMember}>

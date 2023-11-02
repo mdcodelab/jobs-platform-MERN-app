@@ -6,7 +6,12 @@ const initialState = {
 isLoading: false,
 showAlert: false,
 alertText: "",
-alertType: ""
+alertType: "",
+///// add values for the user
+user: null,
+token: null,
+userLocation: ""
+
 };
 
 const AppContext = React.createContext();
@@ -25,10 +30,16 @@ export const AppContextProvider = ({children}) => {
         }, 3000);
     }
 
+    //register user functions
+    async function registerUser (currentUser) {
+        console.log(currentUser);
+    }
+
     return <AppContext.Provider value={{
         ...state,
         displayAlert,
-        clearAlert
+        clearAlert,
+        registerUser
         }}>
         {children}
     </AppContext.Provider>
