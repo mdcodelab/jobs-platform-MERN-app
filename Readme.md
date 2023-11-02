@@ -273,3 +273,42 @@ else {registerUser(currentUser)}
 
 24. REGISTER USER COMPLETE
 
+authController.js:
+async function registerUser (currentUser) {
+        console.log(currentUser);
+        dispatch({type: "REGISTER_USER_BEGIN"})
+        try {
+            const response = await axios.post("/api/v1/auth/register", currentUser);
+            console.log(response);
+            const {user, token, location}=response.data;
+            dispatch({ type: "REGISTER_USER_SUCCESS", payload: {user, token, location}});
+            //localStorage later
+        } catch (error) {
+            console.log(error.response);
+            dispatch({type: "REGISTER_USER_ERROR", payload: {msg: error.response.data.msg}})
+        }
+        clearAlert();
+    }
+
+    register.js:
+    else if(action.type === "REGISTER_USER_SUCCESS") {
+        return {...state, isLoading: false, user: action.payload.user, 
+            token: action.payload.token, location: action.payload.location,
+        userLocation: action.payload.userLocation, jobLocation: action.payload.jobLocation,
+    showAlert: true, alertType: "success", alertText: "User created! Redirecting ..."}
+
+    } else if(action.type === "REGISTER_USER_ERROR") {
+        return {...state, isLoading: false, showAlert: true, alertType: "danger", alertText: action.payload.msg}
+    }
+
+    25. REDIRECT USER to the dashboard
+  Register.js:
+React.useEffect(() => {
+if(user) {
+  setTimeout(() => {
+    navigate("/");
+  }, 3000)
+}
+}, [user, navigate]);
+
+26. 

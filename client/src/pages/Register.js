@@ -4,11 +4,13 @@ import Logo from "../components/Logo.js";
 import FormRow from '../components/FormRow.js';
 import Alert from "../components/Alert.js";
 import { useAppContext } from '../context/appContext.js';
+import {useNavigate} from "react-router-dom";
 
 function Register() {
     //global state
-    const {isLoading, showAlert, displayAlert, clearAlert, registerUser} = useAppContext();
+    const {isLoading, showAlert, displayAlert, clearAlert, registerUser, user} = useAppContext();
     console.log(showAlert);
+    const navigate = useNavigate();
 
     //local state
 const initialState = {
@@ -41,6 +43,15 @@ function handleSubmit(e) {
   }
   console.log(values);
 }
+
+//redirect user to the dashboard page
+React.useEffect(() => {
+if(user) {
+  setTimeout(() => {
+    navigate("/");
+  }, 3000)
+}
+}, [user, navigate])
 
     function getLabel(name) {
         let labelName={
