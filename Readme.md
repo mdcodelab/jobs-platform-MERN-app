@@ -269,3 +269,7 @@ if(isMember) {console.log("Already a member!)}
 else {registerUser(currentUser)}
 }
 
+23. install axios  -in cd client
+
+24. REGISTER USER COMPLETE
+
