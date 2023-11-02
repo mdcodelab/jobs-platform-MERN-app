@@ -311,4 +311,30 @@ if(user) {
 }
 }, [user, navigate]);
 
-26. 
+26. ADD/REMOVE user to/from localStorage
+appContext.js:
+const user = localStorage.getItem("user");
+const token = localStorage.getItem("token");
+const userLocation = localStorage.getItem("location");
+
+async function registerUser () {
+  ////////////////
+addUserToLocalStorage({ user, token, location });
+  ///////////////
+}
+
+ const addUserToLocalStorage = ({ user, token, location }) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+    localStorage.setItem("location", location);
+    console.log("user registered", user, token, location);
+  };
+
+  const removeUserFromLocalStorage = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("location");
+  }
+
+  27. 
+

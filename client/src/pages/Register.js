@@ -45,13 +45,13 @@ function handleSubmit(e) {
 }
 
 //redirect user to the dashboard page
-React.useEffect(() => {
-if(user) {
-  setTimeout(() => {
-    navigate("/");
-  }, 3000)
-}
-}, [user, navigate])
+// React.useEffect(() => {
+// if(user) {
+//   setTimeout(() => {
+//     navigate("/");
+//   }, 3000)
+// }
+// }, [user, navigate])
 
     function getLabel(name) {
         let labelName={
