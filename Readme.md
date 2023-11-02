@@ -336,5 +336,14 @@ addUserToLocalStorage({ user, token, location });
     localStorage.removeItem("location");
   }
 
-  27. 
+  27. Install Morgan & setup
+    http logger middleware for node.js
+- [morgan docs](https://www.npmjs.com/package/morgan)
+    import morgan from 'morgan';
+
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'));
+}
+
+  28. 
 

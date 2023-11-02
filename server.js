@@ -1,12 +1,17 @@
 const express = require("express");
 const app= express();
 require("dotenv").config();
+const morgan = require("morgan");
 
 const notFound=require("./middleware/not-found");
 const errorHandler = require("./middleware/error-handler");
 
 //connect and authenticate user
 const connectDB = require("./db/connectDB");
+
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 
 app.use(express.json());
 
