@@ -397,7 +397,18 @@ try {
 }
 }
 
-30. login front-end
+30. login front-end - same as loginRegister
+
+31. Dashboard page formed by nested pages
+App.js: 
+Route path="/">
+          <Route path="stats" element={<Stats></Stats>}></Route>
+          <Route path="add-job" element={<AddJob></AddJob>}></Route>
+          <Route path="all-jobs" element={<AllJobs></AllJobs>}></Route>
+          <Route path="profile" element={<Profile></Profile>}></Route>
+        </Route>
+  
+  32. 
 
 
 
