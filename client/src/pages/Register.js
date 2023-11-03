@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 
 function Register() {
     //global state
-    const {isLoading, showAlert, displayAlert, clearAlert, registerUser, user} = useAppContext();
+    const {isLoading, showAlert, displayAlert, clearAlert, registerUser, user, loginUser} = useAppContext();
     console.log(showAlert);
     const navigate = useNavigate();
 
@@ -38,6 +38,7 @@ function handleSubmit(e) {
   let currentUser = {name, email, password};
   if(isMember) {
     console.log("Already a member")
+    loginUser(currentUser)
   } else {
     registerUser(currentUser)
   }

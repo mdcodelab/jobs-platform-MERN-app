@@ -356,5 +356,49 @@ class UnauthenticatedError extends CustomError {
     }
 }
 
+29. login function (authController)
+onst login = async (req, res, next) => {
+try {
+  const { email, password } = req.body;
+  const user = await UserModel.findOne({ email });
+
+  console.log(user);
+
+  if (!email || !password) {
+    throw new BadRequestError("Please provide all values!");
+  }
+
+  const passwordInDatabase = user.password; // password from database
+  const candidatePassword = req.body.password; // password inserted by client
+
+  if(passwordInDatabase && candidatePassword) {
+    const isPasswordCorrect = passwordInDatabase === candidatePassword;
+    if (isPasswordCorrect) {
+      const token = user.createJWT();
+      res.status(StatusCodes.OK).json({user: {
+        email: user.email,
+        password: user.password,
+        lastName: user.lastName,
+        location: user.location,
+        name: user.name
+      }, token, location: user.location})
+    } else {
+      throw new UnauthenticatedError("Invalid credentials!");
+    }
+  }
+
+  if (!user) {
+    throw new UnauthenticatedError("Invalid credentials!");
+  }
+  
+  //res.status(StatusCodes.OK).json({ user, token, location: user.location });
+} catch (error) {
+  next(error);
+}
+}
+
+30. login front-end
+
+
 
 

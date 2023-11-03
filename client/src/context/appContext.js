@@ -70,13 +70,38 @@ export const AppContextProvider = ({ children }) => {
     localStorage.removeItem("location");
   }
 
+  //login user
+  async function loginUser (currentUser) {
+    console.log(currentUser)
+    dispatch({ type: "LOGIN_USER_BEGIN" });
+    try {
+      const response = await axios.post("/api/v1/auth/login", currentUser);
+      console.log(response);
+      const { user, token, location } = response.data;
+      dispatch({
+        type: "LOGIN_USER_SUCCESS",
+        payload: { user, token, location },
+      });
+      // Local storage
+      addUserToLocalStorage({ user, token, location });
+    } catch (error) {
+      console.log(error.response);
+      dispatch({
+        type: "LOGIN_USER_ERROR",
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  }
+
   return (
     <AppContext.Provider
       value={{
         ...state,
         displayAlert,
         clearAlert,
-        registerUser
+        registerUser,
+        loginUser
       }}
     >
       {children}
