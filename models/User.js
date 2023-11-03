@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please provide password!"],
-    minlength: 6,
+    minlength: 6
   },
   lastName: {
     type: String,
@@ -50,5 +50,10 @@ this.password=await bcryptjs.hash(this.password, salt)
    console.log(this);
    return jwt.sign({userId: this._id}, "jwtSecret", {expiresIn: "1d"});
  };
+
+ UserSchema.methods.comparePassword = async function (candidatePassword) {
+  const isMatch = await bcryptjs.compare(candidatePassword, this.password);
+  return isMatch;
+ }
 
 module.exports = mongoose.model("UserModel", UserSchema);
