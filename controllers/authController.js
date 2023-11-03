@@ -1,6 +1,7 @@
 const {StatusCodes}=require("http-status-codes");
 const UserModel = require("../models/User");
 const {BadRequestError} = require("../errors/bad-request.js");
+const {UnauthenticatedError} = require("../errors/unauthenticated.js");
 
 
 const register = async (req, res, next) => {
@@ -27,11 +28,7 @@ const register = async (req, res, next) => {
 }
 
 const login = async (req, res) => {
-try {
-    
-} catch (error) {
-    
-}
+
 }
 
 const updateUser = async (req, res) => {

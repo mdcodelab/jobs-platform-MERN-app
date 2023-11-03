@@ -345,5 +345,16 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
-  28. 
+  28. unauthenticated.js in error folder
+  const { StatusCodes } =require("http-status-codes");
+const { CustomError } = require("./custom-error");
+
+class UnauthenticatedError extends CustomError {
+    constructor(message) {
+        super(message) 
+        this.statusCode = StatusCodes.UNAUTHORIZED; //401
+    }
+}
+
+
 
