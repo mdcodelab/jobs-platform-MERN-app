@@ -1,21 +1,46 @@
 import React from 'react';
 import {Outlet, Link} from "react-router-dom";
 import styled from "styled-components";
+import SmallSidebar from '../../components/dashboard_components/SmallSidebar';
+import BigSidebar from "../../components/dashboard_components/BigSidebar";
+import Navbar from "../../components/dashboard_components/Navbar";
 
 function SharedLayout() {
   return (
     <Wrapper>
-      <nav>
-        <Link to="add-job">Add Job</Link>
-        <Link to="all-jobs">All Jobs</Link>
-      </nav>
-      <Outlet></Outlet>
+      <main className="dashboard">
+        <SmallSidebar></SmallSidebar>
+        <BigSidebar></BigSidebar>
+        <div>
+            <Navbar></Navbar>
+            <div className="dashboard-page">
+                <Outlet></Outlet>
+            </div>
+        </div>
+
+      </main>
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
-
+const Wrapper = styled.section`
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .dashboard-page {
+    width: 90vw;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+  @media (min-width: 992px) {
+    .dashboard {
+      grid-template-columns: auto 1fr;
+    }
+    .dashboard-page {
+      width: 90%;
+    }
+  }
 `;
 
 export default SharedLayout;
