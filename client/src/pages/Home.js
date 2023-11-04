@@ -2,6 +2,7 @@ import React from "react";
 import img5 from "../assets/images//img5.jpeg";
 import logo from "../assets/images/logo.png"
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 function Home() {
   return (
@@ -26,7 +27,7 @@ function Home() {
             opportunities, connect with like-minded professionals, and usher in
             a new era of work, all at your fingertips!
           </p>
-          <button className="btn btn-hero">Login/Register</button>
+          <Link className="btn btn-hero" to="/register">Login/Register</Link>
         </div>
         <div className="info__image">
           <img src={img5} alt="we aer waiting for you!"></img>

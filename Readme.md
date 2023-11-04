@@ -401,14 +401,68 @@ try {
 
 31. Dashboard page formed by nested pages
 App.js: 
-Route path="/">
-          <Route path="stats" element={<Stats></Stats>}></Route>
+<Routes>
+        <Route path="/" element={<SharedLayout></SharedLayout>}>
+        <Route index element ={<Stats></Stats>}></Route>
           <Route path="add-job" element={<AddJob></AddJob>}></Route>
           <Route path="all-jobs" element={<AllJobs></AllJobs>}></Route>
           <Route path="profile" element={<Profile></Profile>}></Route>
         </Route>
   
-  32. 
+  32. SharedLayout.js;
+
+import { Outlet, Link } from 'react-router-dom';
+
+const SharedLayout = () => {
+  return (
+    <div>
+      <nav>
+        <Link to='all-jobs'>all jobs</Link>
+        <Link to='add-job'>all jobs</Link>
+      </nav>
+      <Outlet />
+    </div>
+  );
+};
+
+```js
+App.js
+
+<Route index element={<Stats/>} >
+```
+
+33. Protected route
+ProtectedRoute.js:
+function ProtectedRoute({children}) {
+    const {user}=useAppContext();
+
+    if(!user) {
+        return <Navigate to="/home"></Navigate>
+    }
+  return (children
+  );
+}
+
+App.js:
+<BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ProtectedRoute>
+          <SharedLayout></SharedLayout>
+        </ProtectedRoute>}>
+          <Route index element={<Stats></Stats>}></Route>
+          <Route path="add-job" element={<AddJob></AddJob>}></Route>
+          <Route path="all-jobs" element={<AllJobs></AllJobs>}></Route>
+          <Route path="profile" element={<Profile></Profile>}></Route>
+        </Route>
+        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="*" element={<Error></Error>}></Route>
+      </Routes>
+    </BrowserRouter>
+  
+  34. 
+
+
 
 
 
