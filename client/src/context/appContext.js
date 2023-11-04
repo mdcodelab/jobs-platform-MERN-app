@@ -14,7 +14,9 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token || null,
   userLocation: userLocation || "",
-  jobLocation: userLocation || ""
+  jobLocation: userLocation || "",
+  //sidebar
+  showSidebar: false
 };
 
 const AppContext = React.createContext();
@@ -94,6 +96,11 @@ export const AppContextProvider = ({ children }) => {
     clearAlert();
   }
 
+  //toggle sidebar
+  function toggleSidebar () {
+    dispatch({type: "TOGGLE_SIDEBAR"})
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -101,7 +108,8 @@ export const AppContextProvider = ({ children }) => {
         displayAlert,
         clearAlert,
         registerUser,
-        loginUser
+        loginUser,
+        toggleSidebar
       }}
     >
       {children}

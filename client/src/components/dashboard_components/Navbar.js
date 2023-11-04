@@ -5,13 +5,14 @@ import { useAppContext } from '../../context/appContext';
 import {AiOutlineAlignLeft} from "react-icons/ai";
 import {FaUserCircle} from "react-icons/fa";
 import {FaCaretDown} from "react-icons/fa";
-import Logo_dashboard from "../dashboard_components/Logo_dashboard"
+import Logo_dashboard from "../dashboard_components/Logo_dashboard";
 
 function Navbar() {
+    const {toggleSidebar}=useAppContext();
   return (
     <Wrapper>
       <div className="nav center">
-        <button className="toggle-btn">
+        <button type="button" className="toggle-btn" onClick={toggleSidebar}>
           <AiOutlineAlignLeft></AiOutlineAlignLeft>
         </button>
       </div>
@@ -22,13 +23,13 @@ function Navbar() {
       </div>
 
       <div className="btn-container">
-        <button className="btn">
+        <button type="button" className="btn" onClick={()=> console.log("show/hide dropdown")}>
           <FaUserCircle></FaUserCircle>
           John
           <FaCaretDown></FaCaretDown>
         </button>
         <div className="dropdown show-dropdown">
-            <button className="dropdown-btn">Logout</button>
+            <button className="dropdown-btn" type="button" onClick={()=> console.log("logout user")}>Logout</button>
         </div>
       </div>
     </Wrapper>

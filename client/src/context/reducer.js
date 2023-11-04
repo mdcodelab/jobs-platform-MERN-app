@@ -54,6 +54,8 @@ const reducer = (state, action) => {
         alertType: "danger",
         alertText: action.payload.msg,
       };
+    } else if(action.type === "TOGGLE_SIDEBAR") {
+      return {...state, showSidebar: !state.showSidebar}
     }
 
 throw Error(`no actions of such ${action.type}`);
