@@ -460,7 +460,26 @@ App.js:
       </Routes>
     </BrowserRouter>
   
-  34. 
+  34. SharedLayout JSX structure:
+  function SharedLayout() {
+  return (
+    <Wrapper>
+      <main className="dashboard">
+        <SmallSidebar></SmallSidebar>
+        <BigSidebar></BigSidebar>
+        <div>
+            <Navbar></Navbar>
+            <div className="dashboard-page">
+                <Outlet></Outlet>
+            </div>
+        </div>
+
+      </main>
+    </Wrapper>
+  );
+}
+
+35. 
 
 
 

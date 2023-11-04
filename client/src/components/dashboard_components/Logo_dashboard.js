@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import logo from "../assets/images/logo.png";
+import logo from "../../assets/images/logo.png"
 
 function Logo() {
   return (
@@ -16,26 +16,25 @@ function Logo() {
 const Wrapper = styled.div`
 
   .logo__content {
-    height: 3rem;
     display: flex;
     align-items: center;
     height: 100%;
-    width: 16rem;
+    width: 10rem;
     justify-content: space-between;
     margin: 0 auto;
   }
 
   .logo__content img {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
     display: block;
-    margin-right: 1rem;
   }
 
   .logo__content h4 {
     color: var(--primary-500);
     margin: 0;
     font-weight: bold;
+    font-size: 1.2rem;
   }
 `;
 
