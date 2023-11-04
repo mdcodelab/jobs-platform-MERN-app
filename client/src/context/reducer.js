@@ -1,3 +1,6 @@
+
+import {initialState} from "./appContext"
+
 const reducer = (state, action) => {  
     if (action.type === "DISPLAY_ALERT") {
       return {
@@ -56,6 +59,8 @@ const reducer = (state, action) => {
       };
     } else if(action.type === "TOGGLE_SIDEBAR") {
       return {...state, showSidebar: !state.showSidebar}
+    } else if(action.type === "LOGOUT_USER") {
+      return {...initialState, user: null, token: null, userLocation: "", jobLocation: ""}
     }
 
 throw Error(`no actions of such ${action.type}`);

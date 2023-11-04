@@ -8,7 +8,9 @@ import {FaCaretDown} from "react-icons/fa";
 import Logo_dashboard from "../dashboard_components/Logo_dashboard";
 
 function Navbar() {
-    const {toggleSidebar}=useAppContext();
+    const {toggleSidebar, logoutUser, user}=useAppContext();
+    const [showLogout, setShowLogout]=React.useState(false);
+
   return (
     <Wrapper>
       <div className="nav center">
@@ -25,11 +27,11 @@ function Navbar() {
       <div className="btn-container">
         <button type="button" className="btn" onClick={()=> console.log("show/hide dropdown")}>
           <FaUserCircle></FaUserCircle>
-          John
+          {user && user.name}
           <FaCaretDown></FaCaretDown>
         </button>
         <div className="dropdown show-dropdown">
-            <button className="dropdown-btn" type="button" onClick={()=> console.log("logout user")}>Logout</button>
+            <button className="dropdown-btn" type="button" onClick={logoutUser}>Logout</button>
         </div>
       </div>
     </Wrapper>
