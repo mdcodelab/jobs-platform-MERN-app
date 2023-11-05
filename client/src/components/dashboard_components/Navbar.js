@@ -11,6 +11,20 @@ function Navbar() {
     const {toggleSidebar, logoutUser, user}=useAppContext();
     const [showLogout, setShowLogout]=React.useState(false);
     const [isWideScreen, setIsWideScreen] = React.useState(window.innerWidth <= 992);
+  
+    React.useEffect(() => {
+      const handleResize = () => {
+        setIsWideScreen(window.innerWidth <= 992);
+      };
+
+      handleResize(); // Set the initial value
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
 
   return (
     <Wrapper>
@@ -21,7 +35,7 @@ function Navbar() {
       </div>
 
       <div className="logo__dashboard">
-        {isWideScreen && <Logo_dashboard />}
+        {isWideScreen ? <Logo_dashboard /> : null}
         <h3 className="logo-text">Dashboard</h3>
       </div>
 
@@ -136,5 +150,8 @@ const Wrapper = styled.nav`
 `
 
 export default Navbar;
+
+
+
 
 

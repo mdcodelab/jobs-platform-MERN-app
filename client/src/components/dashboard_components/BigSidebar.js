@@ -5,10 +5,15 @@ import Logo_dashboard from "./Logo_dashboard";
 import { useAppContext } from '../../context/appContext';
 
 function BigSidebar() {
-  const {showSidebar}=useAppContext();
+  const { showSidebar } = useAppContext();
+
   return (
     <Wrapper>
-      <div className={showSidebar ? "sidebar-container" : "sidebar-container show-sidebar"}>
+      <div
+        className={
+          showSidebar ? "sidebar-container" : "sidebar-container show-sidebar"
+        }
+      >
         <div className="content">
           <header>
             <Logo_dashboard></Logo_dashboard>
@@ -87,3 +92,4 @@ const Wrapper = styled.aside`
 `
 
 export default BigSidebar;
+
