@@ -27,6 +27,6 @@ export const links = [
         id: 4,
         text: "profile",
         path: "profile",
-        icon: <Profile></Profile>
+        icon: <ImProfile></ImProfile>
     }
 ]

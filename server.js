@@ -29,7 +29,7 @@ app.use("/api/v1/jobs", jobsRoutes);
 app.use(notFound);
 app.use(errorHandler); //last one
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 const start = async () => {
     try {

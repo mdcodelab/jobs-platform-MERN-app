@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import {links} from "../../utils/Links";
 import { FaTimes } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import Navlinks from "./Navlinks";
 import Logo_dashboard from "./Logo_dashboard";
 import {useAppContext} from "../../context/appContext";
 
@@ -18,7 +17,7 @@ function SmallSidebar() {
           <header>
             <Logo_dashboard></Logo_dashboard>
           </header>
-          <div className="nav-links">nav links</div>
+          <Navlinks></Navlinks>
         </div>
       </div>
     </Wrapper>

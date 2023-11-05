@@ -540,7 +540,77 @@ if (action.type === TOGGLE_SIDEBAR) {
 }
 ```
 
-37. 
+37. SmallSidebar.js;
+
+const { showSidebar, toggleSidebar } = useAppContext();
+```
+
+```js
+SmallSidebar.js;
+
+return (
+  <div
+    className={
+      showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
+    }
+  ></div>
+);
+```
+
+```js
+SmallSidebar.js;
+
+return (
+  <button className='close-btn' onClick={toggleSidebar}>
+    <FaTimes />
+  </button>
+);
+```
+
+38. Small Sidebar - Nav Links
+Nav Links Component
+
+```js
+import { NavLink } from 'react-router-dom';
+import {links} from '../utils/links';
+
+const NavLinks = ({ toggleSidebar }) => {
+  return (
+    <div className='nav-links'>
+      {links.map((link) => {
+        const { text, path, id, icon } = link;
+
+        return (
+          <NavLink
+            to={path}
+            key={id}
+            onClick={toggleSidebar}
+            className={({ isActive }) =>
+              isActive ? 'nav-link active' : 'nav-link'
+            }
+          >
+            <span className='icon'>{icon}</span>
+            {text}
+          </NavLink>
+        );
+      })}
+    </div>
+  );
+};
+
+export default NavLinks;
+```
+
+```js
+SmallSidebar.js
+
+import NavLinks from './NavLinks'
+
+return <NavLinks toggleSidebar={toggleSidebar}>
+```
+
+39. 
+
 
 
 
