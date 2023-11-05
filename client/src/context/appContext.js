@@ -117,7 +117,8 @@ export const AppContextProvider = ({ children }) => {
         registerUser,
         loginUser,
         toggleSidebar,
-        logoutUser
+        logoutUser,
+        //showSidebar
       }}
     >
       {children}
@@ -130,6 +131,11 @@ const useAppContext = () => {
 }
 
 export { AppContext, initialState, useAppContext };
+
+
+
+
+
 
 
 

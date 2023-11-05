@@ -1,10 +1,26 @@
 import React from 'react';
 import styled from "styled-components";
+import {links} from "../../utils/Links";
+import { FaTimes } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import Logo_dashboard from "./Logo_dashboard";
+import {useAppContext} from "../../context/appContext";
 
 function SmallSidebar() {
+  const {showSidebar, toggleSidebar}=useAppContext();
   return (
     <Wrapper>
-      Small Sidebar
+      <div className={showSidebar ? "sidebar-container show-sidebar" : "sidebar-container"}>
+        <div className="content">
+          <button type="button" className="close-btn" onClick={toggleSidebar}>
+            <FaTimes></FaTimes>
+          </button>
+          <header>
+            <Logo_dashboard></Logo_dashboard>
+          </header>
+          <div className="nav-links">nav links</div>
+        </div>
+      </div>
     </Wrapper>
   );
 }
