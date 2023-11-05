@@ -1,11 +1,21 @@
 import React from 'react';
 import styled from "styled-components";
-import {links} from "../../utils/Links";
+import Navlinks from "./Navlinks";
+import Logo_dashboard from "./Logo_dashboard";
+import { useAppContext } from '../../context/appContext';
 
 function BigSidebar() {
+  const {showSidebar}=useAppContext();
   return (
     <Wrapper>
-      Big Sidebar
+      <div className={showSidebar ? "sidebar-container" : "sidebar-container show-sidebar"}>
+        <div className="content">
+          <header>
+            <Logo_dashboard></Logo_dashboard>
+          </header>
+          <Navlinks></Navlinks>
+        </div>
+      </div>
     </Wrapper>
   );
 }
@@ -48,6 +58,8 @@ const Wrapper = styled.aside`
       padding: 1rem 0;
       padding-left: 2.5rem;
       text-transform: capitalize;
+      font-size: 1.25rem;
+      margin-bottom: 1.8rem;
       transition: var(--transition);
     }
     .nav-link:hover {

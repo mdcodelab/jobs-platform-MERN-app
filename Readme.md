@@ -609,7 +609,24 @@ import NavLinks from './NavLinks'
 return <NavLinks toggleSidebar={toggleSidebar}>
 ```
 
-39. 
+39. BigSidebar.js
+function BigSidebar() {
+  const {showSidebar}=useAppContext();
+  return (
+    <Wrapper>
+      <div className={showSidebar ? "sidebar-container" : "sidebar-container show-sidebar"}>
+        <div className="content">
+          <header>
+            <Logo_dashboard></Logo_dashboard>
+          </header>
+          <Navlinks></Navlinks>
+        </div>
+      </div>
+    </Wrapper>
+  );
+}
+
+40. 
 
 
 

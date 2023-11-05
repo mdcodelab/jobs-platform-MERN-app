@@ -10,6 +10,7 @@ import Logo_dashboard from "../dashboard_components/Logo_dashboard";
 function Navbar() {
     const {toggleSidebar, logoutUser, user}=useAppContext();
     const [showLogout, setShowLogout]=React.useState(false);
+    const [isWideScreen, setIsWideScreen] = React.useState(window.innerWidth <= 992);
 
   return (
     <Wrapper>
@@ -20,18 +21,24 @@ function Navbar() {
       </div>
 
       <div className="logo__dashboard">
-        <Logo_dashboard></Logo_dashboard>
+        {isWideScreen && <Logo_dashboard />}
         <h3 className="logo-text">Dashboard</h3>
       </div>
 
       <div className="btn-container">
-        <button type="button" className="btn" onClick={()=> console.log("show/hide dropdown")}>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => console.log("show/hide dropdown")}
+        >
           <FaUserCircle></FaUserCircle>
           {user && user.name}
           <FaCaretDown></FaCaretDown>
         </button>
         <div className="dropdown show-dropdown">
-            <button className="dropdown-btn" type="button" onClick={logoutUser}>Logout</button>
+          <button className="dropdown-btn" type="button" onClick={logoutUser}>
+            Logout
+          </button>
         </div>
       </div>
     </Wrapper>
@@ -42,8 +49,9 @@ const Wrapper = styled.nav`
   height: 6.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.1);
+  padding: 0 2.5rem;
   .nav-center {
     display: flex;
     width: 90vw;
@@ -128,3 +136,5 @@ const Wrapper = styled.nav`
 `
 
 export default Navbar;
+
+
