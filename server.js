@@ -2,6 +2,7 @@ const express = require("express");
 const app= express();
 require("dotenv").config();
 const morgan = require("morgan");
+const authenticateUser=require("./middleware/authenticateUser.js");
 
 const notFound=require("./middleware/not-found");
 const errorHandler = require("./middleware/error-handler");
@@ -21,10 +22,10 @@ app.get("/api/v1", (req, res) => {
     res.send("Home page");
 })
 
-const authRoutes = require("./router/authRoutes");
+const authRoutes = require("./router/authRoutes.js");
 app.use("/api/v1/auth", authRoutes);
-const jobsRoutes=require("./router/jobsRoutes");
-app.use("/api/v1/jobs", jobsRoutes);
+const jobsRoutes=require("./router/jobsRoutes.js");
+app.use("/api/v1/jobs", authenticateUser, jobsRoutes);
 
 app.use(notFound);
 app.use(errorHandler); //last one

@@ -626,6 +626,26 @@ function BigSidebar() {
   );
 }
 
+40. Authenticate User Setup
+
+- create auth.js in <b>middleware</b>
+
+```js
+const auth = async (req, res, next) => {
+  console.log('authenticate user');
+  next();
+};
+
+export default auth;
+```
+
+```js
+authRoutes.js;
+
+import authenticateUser from '../middleware/auth.js';
+
+router.route('/updateUser').patch(authenticateUser, updateUser);
+
 40. 
 
 
