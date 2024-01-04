@@ -1,8 +1,8 @@
 import React from "react";
-import img5 from "../assets/images//img5.jpeg";
-import logo from "../assets/images/logo.png"
+import logo from "../assets/images/logo.png";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import Logo from "../components/Logo";
 
 function Home() {
   return (
@@ -14,7 +14,10 @@ function Home() {
         </div>
       </nav>
       <div className="container">
-        <div className="info">
+        <video className="video" autoPlay muted playsInline loop>
+          <source src="assets/video.mp4" type="video/mp4"></source>
+        </video>
+        <div className="cover">
           <h1>
             Job <span>tracking</span> platform
           </h1>
@@ -27,10 +30,17 @@ function Home() {
             opportunities, connect with like-minded professionals, and usher in
             a new era of work, all at your fingertips!
           </p>
-          <Link className="btn btn-hero" to="/register">Login/Register</Link>
+          <Link className="btn btn-hero" to="/register">
+            Login/Register
+          </Link>
         </div>
-        <div className="info__image">
-          <img src={img5} alt="we aer waiting for you!"></img>
+      </div>
+      <div className="footer">
+        <div className="copyright">
+          <p className="copyright__footer">
+            &copy; {new Date().getFullYear()} <span>W</span>
+            <span> Work Wave Hub</span>. All Rights Reserved.
+          </p>
         </div>
       </div>
     </Wrapper>
@@ -41,6 +51,8 @@ const Wrapper = styled.main`
   max-width: var(--max-width);
   height: 100vh;
   margin: 0 auto;
+  position: relative;
+  background: var(--primary-900);
 
   nav {
     width: 100%;
@@ -67,54 +79,35 @@ const Wrapper = styled.main`
   }
 
   .container {
+    width: 100%;
+    height: calc(100vh - 11rem);
+  }
+
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .cover {
+    position: absolute;
+    top: 5rem;
+    z-index: 10;
+    height: calc(100vh - 11rem);
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+
+  //
+  .footer {
+    width: 100%;
+    height: 5rem;
     display: flex;
-    height: calc(100vh - 6rem);
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-
-  .info,
-  .info__image {
-    flex: 1;
-  }
-
-  .info h1 {
-    font-weight: bold;
-  }
-
-  .info span {
+    align-items: center;
+    justify-content: center;
     color: var(--primary-500);
   }
-
-  .info p {
-    width: 90%;
-  }
-
-  .info__image img {
-    width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow-1);
-  }
-
-  @media (max-width: 992px) {
-.container {
-    flex-direction: column;
-}
-
-.info p {
-    text-align: center;
-}
-
-.btn-hero {
-    margin-bottom: 2rem;
-}
-
-.info__image {
-    display: none;
-}
-  }
 `;
-
 
 export default Home;
