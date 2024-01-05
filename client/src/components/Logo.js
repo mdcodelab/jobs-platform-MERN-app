@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
-import logo from "../assets/images/logo.png";
 
 function Logo() {
   return (
     <Wrapper>
       <div className="logo__content">
-        <img src={logo} alt="work wave hub" className="logo"></img>
+        <h2>W</h2>
         <h4>Work Wave Hub</h4>
       </div>
     </Wrapper>
@@ -20,16 +19,22 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     height: 100%;
-    width: 16rem;
+    width: 13.5rem;
     justify-content: space-between;
     margin: 0 auto;
   }
 
-  .logo__content img {
+  .logo__content h2 {
+    margin: 0;
     width: 2.5rem;
     height: 2.5rem;
-    display: block;
-    margin-right: 1rem;
+    font-size: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-500);
+    color: #fff;
   }
 
   .logo__content h4 {

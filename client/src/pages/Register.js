@@ -4,7 +4,7 @@ import Logo from "../components/Logo.js";
 import FormRow from '../components/FormRow.js';
 import Alert from "../components/Alert.js";
 import { useAppContext } from '../context/appContext.js';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 function Register() {
     //global state
@@ -109,13 +109,22 @@ if(user) {
             <button type="button" className="member-btn" onClick={toggleMember}>
               {values.isMember ? "Register" : "Login"}
             </button>
-          </div> 
+          </div>
+          <div className="back__home">
+            <Link to="/home">Back Home</Link>
+          </div>
       </form>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+max-width: var(--max-width);
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: center;
+
 h3 {
     text-align: center;
     font-size: 1.8rem;
@@ -141,6 +150,18 @@ h3 {
 
 .member-btn:hover {
     color: var(--primary-700);
+}
+
+.back__home {
+  width: 100%;
+  height: max-content;
+}
+
+.back__home a {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: dotted;
 }
 `;
 

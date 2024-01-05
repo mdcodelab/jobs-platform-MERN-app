@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Home() {
   React.useEffect(() => {
@@ -42,7 +42,6 @@ function Home() {
             <Link
               className="btn btn-hero"
               to="/register"
-                
               data-aos-duration="2000"
             >
               Login/Register
@@ -160,7 +159,7 @@ const Wrapper = styled.main`
     margin: 0 auto;
     width: max-content;
     margin-top: 2.5rem;
-    
+
     animation: appear 2.5s ease;
   }
 
@@ -188,6 +187,7 @@ const Wrapper = styled.main`
     justify-content: center;
     color: #fff;
     padding-top: 2rem;
+    font-size: 0.8rem;
   }
 
   .footer__info {
@@ -202,7 +202,7 @@ const Wrapper = styled.main`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 8.7rem;
+    width: 7.15rem;
   }
 
   .logo__letter {
@@ -217,10 +217,9 @@ const Wrapper = styled.main`
 
   .logo__name {
     color: var(--primary-400);
-    font-size: 1rem;
   }
 
-  @media (max-width: 362px) {
+  @media screen and (max-width: 362px) {
     .footer {
       padding-top: 1rem;
     }
@@ -234,6 +233,31 @@ const Wrapper = styled.main`
       padding: 0;
     }
   }
+
+    @media screen and (max-width: 560px) {
+      .cover__content {
+        padding: 1rem 0;
+      }
+      .cover__content h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media screen and (max-width: 419px) {
+      .cover__content p {
+        line-height: 1.5rem;
+      }
+      .cover__content h1 {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    @media (max-width: 303px) {
+      .cover__content h1 {
+        font-size: 1.8rem;
+      }
+    }
+
 `;
 
 export default Home;
