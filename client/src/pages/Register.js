@@ -107,7 +107,7 @@ if(user) {
           <div className="register">
             <span>{values.isMember ? "Not a member?" : "Already a member?"}</span>
             <button type="button" className="member-btn" onClick={toggleMember}>
-              {values.isMember ? "Register" : "Login"}
+              {values.isMember ? <Link to="/register">Register</Link> : <Link to="/login">Login</Link>}
             </button>
           </div>
           <div className="back__home">

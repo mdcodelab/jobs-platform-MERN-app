@@ -105,7 +105,6 @@ export const AppContextProvider = ({ children }) => {
   function logoutUser () {
     dispatch({type: "LOGOUT_USER"});
     removeUserFromLocalStorage();
-
   } 
 
   return (

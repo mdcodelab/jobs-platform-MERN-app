@@ -15,15 +15,21 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ProtectedRoute>
-          <SharedLayout></SharedLayout>
-        </ProtectedRoute>}>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <SharedLayout></SharedLayout>
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Stats></Stats>}></Route>
           <Route path="add-job" element={<AddJob></AddJob>}></Route>
           <Route path="all-jobs" element={<AllJobs></AllJobs>}></Route>
           <Route path="profile" element={<Profile></Profile>}></Route>
         </Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/login" element={<Register></Register>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="*" element={<Error></Error>}></Route>
       </Routes>
